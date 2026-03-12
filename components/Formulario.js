@@ -1,5 +1,11 @@
 import { Picker } from '@react-native-picker/picker';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 
 const Formulario = () => {
   return (
@@ -21,6 +27,12 @@ const Formulario = () => {
             <Picker.Item label="Perú" value="PE" />
           </Picker>
         </View>
+
+        <TouchableWithoutFeedback>
+          <View>
+            <Text>Buscar clima</Text>
+          </View>
+        </TouchableWithoutFeedback>
       </View>
     </>
   );
