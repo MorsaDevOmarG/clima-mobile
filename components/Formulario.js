@@ -10,7 +10,7 @@ import {
   View,
 } from 'react-native';
 
-const Formulario = ({ busqueda, guardarBusqueda }) => {
+const Formulario = ({ busqueda, guardarBusqueda, guardarConsultar }) => {
   const { ciudad, pais } = busqueda;
 
   const [animacionboton] = useState(new Animated.Value(1));
@@ -26,6 +26,9 @@ const Formulario = ({ busqueda, guardarBusqueda }) => {
       ]);
       return;
     }
+
+    // Consultar la API
+    guardarConsultar(true);
   };
 
   const animacionEntrada = () => {
