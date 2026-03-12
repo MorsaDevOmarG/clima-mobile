@@ -9,4 +9,5 @@
 
 - React
 - [API](https://openweathermap.org)
--
+- Picker
+  - **_npm i @react-native-picker/picker_**
