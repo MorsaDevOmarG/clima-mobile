@@ -1,15 +1,28 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  Keyboard,
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 import Formulario from './components/Formulario';
 
 const App = () => {
+  // Funcionar para que cuando des click fuera del input, se cierre el Teclado
+  const ocultarTeclado = () => {
+    Keyboard.dismiss();
+  };
+
   return (
     <>
-      <View style={styles.app}>
-        <View style={styles.contenido}>
-          <Formulario />
+      <TouchableWithoutFeedback onPress={() => ocultarTeclado()}>
+        <View style={styles.app}>
+          <View style={styles.contenido}>
+            <Formulario />
+          </View>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
     </>
   );
 };
