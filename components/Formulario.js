@@ -9,7 +9,9 @@ import {
   View,
 } from 'react-native';
 
-const Formulario = () => {
+const Formulario = ({ busqueda, guardarBusqueda }) => {
+  const { ciudad, pais } = busqueda;
+
   const [animacionboton] = useState(new Animated.Value(1));
 
   const animacionEntrada = () => {
@@ -44,11 +46,17 @@ const Formulario = () => {
             style={styles.input}
             placeholder="Ciudad"
             placeholderTextColor="#666"
+            value={ciudad}
+            onChangeText={ciudad => guardarBusqueda({ ...busqueda, ciudad })}
           />
         </View>
 
         <View>
-          <Picker itemStyle={{ height: 120, backgroundColor: '#fff' }}>
+          <Picker
+            selectedValue={pais}
+            onValueChange={pais => guardarBusqueda({ ...busqueda, pais })}
+            itemStyle={{ height: 120, backgroundColor: '#fff' }}
+          >
             <Picker.Item label="-- Selecciona un país --" value="" />
             <Picker.Item label="Estados Unidos" value="US" />
             <Picker.Item label="México" value="MX" />

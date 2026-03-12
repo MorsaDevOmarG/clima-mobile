@@ -9,6 +9,11 @@ import {
 import Formulario from './components/Formulario';
 
 const App = () => {
+  const [busqueda, guardarBusqueda] = React.useState({
+    ciudad: '',
+    pais: '',
+  });
+
   // Funcionar para que cuando des click fuera del input, se cierre el Teclado
   const ocultarTeclado = () => {
     Keyboard.dismiss();
@@ -19,7 +24,7 @@ const App = () => {
       <TouchableWithoutFeedback onPress={() => ocultarTeclado()}>
         <View style={styles.app}>
           <View style={styles.contenido}>
-            <Formulario />
+            <Formulario busqueda={busqueda} guardarBusqueda={guardarBusqueda} />
           </View>
         </View>
       </TouchableWithoutFeedback>
