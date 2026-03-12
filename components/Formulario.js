@@ -1,6 +1,7 @@
 import { Picker } from '@react-native-picker/picker';
 import { useState } from 'react';
 import {
+  Alert,
   Animated,
   StyleSheet,
   Text,
@@ -13,6 +14,19 @@ const Formulario = ({ busqueda, guardarBusqueda }) => {
   const { ciudad, pais } = busqueda;
 
   const [animacionboton] = useState(new Animated.Value(1));
+
+  const consultarClima = () => {
+    console.log('Consultando clima...');
+
+    if (pais.trim() === '' || ciudad.trim() === '') {
+      // console.log('Error: Ambos campos son obligatorios');
+
+      Alert.alert('Error', 'Agrega un Ciudad y País para la búsqueda', [
+        { text: 'OK' },
+      ]);
+      return;
+    }
+  };
 
   const animacionEntrada = () => {
     console.log('Animacion entrada');
@@ -71,6 +85,7 @@ const Formulario = ({ busqueda, guardarBusqueda }) => {
         <TouchableWithoutFeedback
           onPressIn={() => animacionEntrada()}
           onPressOut={() => animacionSalida()}
+          onPress={() => consultarClima()}
         >
           <Animated.View style={[styles.btnBuscar, estiloAnimacion]}>
             <Text style={styles.textoBtn}>Buscar clima</Text>
