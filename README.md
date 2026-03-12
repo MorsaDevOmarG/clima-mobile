@@ -11,3 +11,5 @@
 - [API](https://openweathermap.org)
 - Picker
   - **_npm i @react-native-picker/picker_**
+- Animaciones
+  - Importamos: _ANIMATED_
