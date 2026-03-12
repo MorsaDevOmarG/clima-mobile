@@ -13,3 +13,8 @@
   - **_npm i @react-native-picker/picker_**
 - Animaciones
   - Importamos: _ANIMATED_
+- Cerrar Teclado
+  - TouchableWithoutFeedback
+  - Keyboard.dismiss();
+    - Esto funciona para cerrar el teclado cuando se da click fuera del _INPUT_
+-

@@ -14,10 +14,26 @@ const Formulario = () => {
 
   const animacionEntrada = () => {
     console.log('Animacion entrada');
+
+    Animated.spring(animacionboton, {
+      toValue: 0.9,
+      useNativeDriver: true,
+    }).start();
   };
 
   const animacionSalida = () => {
     console.log('Animacion salida');
+
+    Animated.spring(animacionboton, {
+      toValue: 1,
+      friction: 4,
+      tension: 30,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const estiloAnimacion = {
+    transform: [{ scale: animacionboton }],
   };
 
   return (
@@ -48,9 +64,9 @@ const Formulario = () => {
           onPressIn={() => animacionEntrada()}
           onPressOut={() => animacionSalida()}
         >
-          <View style={styles.btnBuscar}>
+          <Animated.View style={[styles.btnBuscar, estiloAnimacion]}>
             <Text style={styles.textoBtn}>Buscar clima</Text>
-          </View>
+          </Animated.View>
         </TouchableWithoutFeedback>
       </View>
     </>
