@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
+  Alert,
   Keyboard,
   StyleSheet,
   Text,
@@ -13,20 +14,40 @@ const App = () => {
     ciudad: '',
     pais: '',
   });
-
   const [consultar, guardarConsultar] = useState(false);
-
+  const [resultado, guardarResultado] = useState({});
   const { ciudad, pais } = busqueda;
 
   useEffect(() => {
-    if (consultar) {
-      // console.log('Realizando consulta a la API...');
-      const appId = 'b6a534a0a76cc25c441e516629708afb';
+    const consultarClima = async () => {
+      if (consultar) {
+        // console.log('Realizando consulta a la API...');
+        const appId = 'b6a534a0a76cc25c441e516629708afb';
 
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${appId}`;
-      console.log('URL de la API:', url);
-    }
+        const url = `http://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${appId}`;
+        console.log('URL de la API:', url);
+
+        try {
+          const respuesta = await fetch(url);
+          const resultado = await respuesta.json();
+          console.log('Resultado de la API:', resultado);
+
+          guardarResultado(resultado);
+          guardarConsultar(false);
+        } catch (error) {
+          mostrarAlerta();
+        }
+      }
+    };
+
+    consultarClima();
   }, [consultar]);
+
+  const mostrarAlerta = () => {
+    Alert.alert('Error', 'No hay resultados, intenta con otra Ciudad o País', [
+      { text: 'OK' },
+    ]);
+  };
 
   // Funcionar para que cuando des click fuera del input, se cierre el Teclado
   const ocultarTeclado = () => {

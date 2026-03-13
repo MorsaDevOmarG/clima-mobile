@@ -21,14 +21,18 @@ const Formulario = ({ busqueda, guardarBusqueda, guardarConsultar }) => {
     if (pais.trim() === '' || ciudad.trim() === '') {
       // console.log('Error: Ambos campos son obligatorios');
 
-      Alert.alert('Error', 'Agrega un Ciudad y País para la búsqueda', [
-        { text: 'OK' },
-      ]);
+      mostrarAlerta();
       return;
     }
 
     // Consultar la API
     guardarConsultar(true);
+  };
+
+  const mostrarAlerta = () => {
+    Alert.alert('Error', 'Agrega un Ciudad y País para la búsqueda', [
+      { text: 'OK' },
+    ]);
   };
 
   const animacionEntrada = () => {
