@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 import Formulario from './components/Formulario';
+import Clima from './components/Clima';
 
 const App = () => {
   const [busqueda, guardarBusqueda] = useState({
@@ -59,6 +60,8 @@ const App = () => {
       <TouchableWithoutFeedback onPress={() => ocultarTeclado()}>
         <View style={styles.app}>
           <View style={styles.contenido}>
+            <Clima resultado={resultado} />
+
             <Formulario
               busqueda={busqueda}
               guardarBusqueda={guardarBusqueda}
